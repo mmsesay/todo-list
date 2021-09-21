@@ -1,0 +1,67 @@
+body {
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+main {
+  padding: 10% 0;
+}
+
+.list-none {
+  list-style: none;
+}
+
+.color-gray {
+  color: rgb(175, 172, 172);
+}
+
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.space-x-y {
+  padding: 8px 15px;
+}
+
+.card {
+  height: 50%;
+  background-color: #fff;
+  box-shadow: 5px 5px 20px 5px rgba(212, 212, 212, 0.466);
+}
+
+.text-input {
+  height: 13px;
+  border: none;
+  padding: 15px 0;
+  font-style: italic;
+}
+
+input:focus {
+  outline: none;
+}
+
+.border-bottom-line {
+  border-bottom: 1px solid rgb(175, 172, 172);
+}
+
+.checkbox {
+  margin-right: 20px;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 10% 20%;
+  }
+}

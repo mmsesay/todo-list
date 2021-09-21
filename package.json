@@ -1,0 +1,31 @@
+{
+  "name": "todo-list-project",
+  "version": "1.0.0",
+  "description": "this is a simple todo list application using webpack and it is being served by webpack dev server",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack-dev-server --mode production --entry ./src/js/index.js --output-filename ./dist/bundle.js",
+    "build:prod": "webpack src/js/index.js dist/bundle.js -p",
+    "start": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmsesay/todo-list.git"
+  },
+  "keywords": [],
+  "author": "Muhammad Mustapha Sesay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmsesay/todo-list/issues"
+  },
+  "homepage": "https://github.com/mmsesay/todo-list#readme",
+  "devDependencies": {
+    "css-loader": "^6.3.0",
+    "html-webpack-plugin": "^5.3.2",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1"
+  }
+}
