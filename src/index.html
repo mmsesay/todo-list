@@ -3,11 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
   <title>Todo list</title>
 </head>
 <body>
-  <h1>Welcome todo list</h1>
-  <div class="list-container"></div>
+  <div class="todo-list-container">
+    <div class="card">
+      <div class="card-top flex space-between items-center space-x-y">
+        <p>Today&apos;s To Do</p>
+        <i class="fas fa-sync-alt color-gray"></i>
+      </div>
+      <div class="border-bottom-line"></div>
+      <div class="space-x-y">
+        <input type="text" placeholder="Add to your list..." class="text-input">
+      </div>
+      <div class="border-bottom-line"></div>
+      <div class="todo-lists"></div>
+      <div class="card-bottom flex justify-center space-x-y">
+        <p>Clear all completed</p>
+      </div>
+    </div>
+  </div>
   <script src="../dist/bundle.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack-dev-server --mode production --entry ./src/js/index.js",
+    "build": "webpack-dev-server --mode production --entry ./src/js/index.js --output-filename ./dist/bundle.js",
     "build:prod": "webpack src/js/index.js dist/bundle.js -p"
   },
   "repository": {

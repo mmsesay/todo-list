@@ -1,0 +1,1 @@
+export const todoLists = document.querySelector('.todo-lists');
