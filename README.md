@@ -3,7 +3,7 @@ This is a simple todo list web page which is be built using webpack and served b
 
 List Structure                                    |
 :------------------------------------------------:|
-![](./assests/todo-v1.png)                        |
+![](./assets/todo-v1.png)                        |
 
 
 ## Built With
