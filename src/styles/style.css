@@ -1,7 +1,10 @@
 body {
   background-color: #fff;
-  padding: 50% 0;
   overflow-x: hidden;
+}
+
+main {
+  padding: 10% 0;
 }
 
 .list-none {
