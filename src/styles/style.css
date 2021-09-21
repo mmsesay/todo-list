@@ -48,6 +48,10 @@ main {
   font-style: italic;
 }
 
+.strike-line {
+  text-decoration: line-through;
+}
+
 input:focus {
   outline: none;
 }
