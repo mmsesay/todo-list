@@ -1,4 +1,4 @@
-import { todoLists } from './elements';
+import { todoLists } from './elements.js';
 import '../styles/style.css';
 
 const todoTasks = [
@@ -16,7 +16,7 @@ const todoTasks = [
 
 let template = '';
 const renderTodos = () => {
-  todoTasks.forEach( todo => {
+  todoTasks.forEach((todo) => {
     template += `
       <div class='flex space-between items-center space-x-y'>
         <div class='flex items-center'>
@@ -30,6 +30,6 @@ const renderTodos = () => {
   });
 
   todoLists.innerHTML = template;
-}
+};
 
 window.onload = renderTodos();
