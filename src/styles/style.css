@@ -56,12 +56,27 @@ input:focus {
   outline: none;
 }
 
+.enterIcon {
+  position: absolute;
+  transform: rotate(90deg);
+  top: 18.5%;
+  right: 23%;
+}
+
 .border-bottom-line {
   border-bottom: 1px solid rgb(175, 172, 172);
 }
 
 .checkbox {
   margin-right: 20px;
+}
+
+.dragging {
+  border: 1px solid rgba(60, 103, 245, 0.842);
+}
+
+.dragElement:hover {
+  cursor: move;
 }
 
 @media (min-width: 768px) {
