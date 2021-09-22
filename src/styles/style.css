@@ -44,7 +44,7 @@ main {
 .text-input {
   height: 13px;
   border: none;
-  padding: 15px 0;
+  padding: 20px 0;
   font-style: italic;
 }
 
@@ -54,6 +54,15 @@ main {
 
 input:focus {
   outline: none;
+}
+
+.editInputField {
+  display: none;
+  font-style: normal;
+}
+
+.description {
+  display: flex;
 }
 
 .enterIcon {
@@ -82,5 +91,10 @@ input:focus {
 @media (min-width: 768px) {
   main {
     padding: 10% 20%;
+  }
+
+  .enterIcon {
+    top: 28.8%;
+    right: 21%;
   }
 }

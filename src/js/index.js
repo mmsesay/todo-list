@@ -1,4 +1,4 @@
-import { todoLists, enableDragging } from './elements.js';
+import { todoLists } from './elements.js';
 import { updateTodos } from './state-management.js';
 import '../styles/style.css';
 
@@ -23,7 +23,8 @@ window.onload = () => {
         <div class='draggable' draggable='true'>
           <div class='flex space-between items-center space-x-y'>
             <div class='flex items-center'>
-              <input type='checkbox' name='${todo.index}' value='checked' class='checkbox color-gray'>
+              <input type='checkbox' name='${todo.index}' class='checkbox color-gray'>
+              <input type='text' value='${todo.description}' class='text-input editInputField' />
               <p class='description'>${todo.description}</p>
             </div>
             <i class='fas fa-ellipsis-v color-gray dragIcon'></i>
@@ -38,5 +39,4 @@ window.onload = () => {
 
   renderTodos();
   updateTodos(todoTasks);
-  enableDragging();
-}
+};
