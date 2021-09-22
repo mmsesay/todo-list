@@ -44,12 +44,32 @@ main {
 .text-input {
   height: 13px;
   border: none;
-  padding: 15px 0;
+  padding: 20px 0;
   font-style: italic;
+}
+
+.strike-line {
+  text-decoration: line-through;
 }
 
 input:focus {
   outline: none;
+}
+
+.editInputField {
+  display: none;
+  font-style: normal;
+}
+
+.description {
+  display: flex;
+}
+
+.enterIcon {
+  position: absolute;
+  transform: rotate(90deg);
+  top: 18.5%;
+  right: 23%;
 }
 
 .border-bottom-line {
@@ -60,8 +80,21 @@ input:focus {
   margin-right: 20px;
 }
 
+.dragging {
+  border: 1px solid rgba(60, 103, 245, 0.842);
+}
+
+.dragElement:hover {
+  cursor: move;
+}
+
 @media (min-width: 768px) {
   main {
     padding: 10% 20%;
+  }
+
+  .enterIcon {
+    top: 28.8%;
+    right: 21%;
   }
 }
