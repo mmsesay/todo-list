@@ -15,19 +15,21 @@ window.onload = () => {
       completed: false,
     },
   ];
-  
+
   let template = '';
   const renderTodos = () => {
     todoTasks.forEach((todo) => {
       template += `
-        <div class='flex space-between items-center space-x-y'>
-          <div class='flex items-center'>
-            <input type='checkbox' name='${todo.index}' value='checked' class='checkbox color-gray'>
-            <p class=${todo.completed === true? 'strike-line' : ''}>${todo.description}</p>
+        <div class='dragElement' draggable='true'>
+          <div class='flex space-between items-center space-x-y'>
+            <div class='flex items-center'>
+              <input type='checkbox' name='${todo.index}' value='checked' class='checkbox color-gray'>
+              <p class='description'>${todo.description}</p>
+            </div>
+            <i class='fas fa-ellipsis-v color-gray'></i>
           </div>
-          <i class='fas fa-ellipsis-v color-gray'></i>
+          <div class='border-bottom-line'></div>
         </div>
-        <div class='border-bottom-line'></div>
       `;
     });
 
