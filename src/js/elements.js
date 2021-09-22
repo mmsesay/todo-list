@@ -3,7 +3,7 @@ export const todoLists = document.querySelector('.todo-lists');
 export const checkBoxes = document.querySelectorAll('.checkbox');
 
 const trackDragging = () => {
-  document.querySelectorAll('.draggable').forEach((todoElement, idx) => {
+  document.querySelectorAll('.draggable').forEach((todoElement) => {
     todoElement.addEventListener('dragstart', () => {
       todoElement.classList.add('dragging');
     });
@@ -17,7 +17,7 @@ const trackDragging = () => {
 export const enableDragging = () => {
   trackDragging();
 
-  todoLists.addEventListener('dragover', event => {
+  todoLists.addEventListener('dragover', (event) => {
     event.preventDefault();
     const draggable = document.querySelector('.dragging');
     todoLists.appendChild(draggable);
