@@ -12,10 +12,9 @@ class DataStore {
   addTask = () => {
     this.addTodoInputField.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
-        const { value } = this.addTodoInputField.value;
         const newTaskObject = {
           index: this.tasksArray.length + 1,
-          description: value,
+          description: this.addTodoInputField.value,
           completed: false,
         };
         this.saveTask(newTaskObject);
@@ -75,7 +74,6 @@ class DataStore {
               this.updateTask(taskIndex, task);
             }
           }
-          return;
         });
       });
     });
@@ -103,7 +101,6 @@ class DataStore {
                 task.description = updateText;
                 this.updateTask(taskIndex, task);
               }
-              return;
             });
           }
         });
@@ -142,7 +139,8 @@ class DataStore {
   }
 
   getTasksArray = () => {
-    return this.tasksArray;
+    const data = this.tasksArray;
+    return data;
   }
 
   hideElements = (args) => {
