@@ -97,6 +97,14 @@ input:focus {
   background-color: white;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-move {
+  cursor: move;
+}
+
 .dragging {
   border: 1px solid rgba(60, 103, 245, 0.842);
   background-color: aqua;
@@ -104,6 +112,14 @@ input:focus {
 
 .dragElement:hover {
   cursor: move;
+}
+
+.dragIcon {
+  display: flex;
+}
+
+.trashIcon {
+  display: none;
 }
 
 #clear-all-completed {

@@ -31,7 +31,7 @@ class DataStore {
   readTasks = () => {
     this.tasksArray.forEach((todo, index) => {
       this.todoLists.innerHTML += `
-        <div id='${index}' class='draggable' draggable='true'>
+        <div id='${index}' class='draggable cursor-move' draggable='true'>
           <div class='flex space-between items-center space-x-y'>
             <div class='flex items-center w-full'>
               <input type='checkbox' class='checkbox color-gray' ${todo.completed? 'checked' : ''}>
@@ -39,6 +39,7 @@ class DataStore {
               <p class='description ${todo.completed? 'strike-line': ''}'>${todo.description}</p>
             </div>
             <i class='fas fa-ellipsis-v color-gray dragIcon'></i>
+            <i class="fas fa-trash-alt cursor-pointer color-gray trashIcon"></i>
           </div>
           <div class='border-bottom-line'></div>
         </div>
@@ -77,11 +78,13 @@ class DataStore {
         item.classList.add('bg-yellow');
         const editTodoInputField = item.childNodes[1].childNodes[1].childNodes[3];
         const description = item.childNodes[1].childNodes[1].childNodes[5];
+        const dragIcon = item.childNodes[1].childNodes[3];
+        const trashIcon = item.childNodes[1].childNodes[5];
 
-        // show the edit field
-        editTodoInputField.style.display = 'flex';
-        description.style.display = 'none';
+        this.showElements([editTodoInputField, trashIcon]);
+        this.hideElements([description, dragIcon]);
 
+        // listen for enter key press to edit item
         editTodoInputField.addEventListener('keydown', (event) => {
           if (event.key === 'Enter') {
             updateText = editTodoInputField.value;
@@ -92,6 +95,13 @@ class DataStore {
               }
             });
           }
+        });
+
+        // listen for trash icon clicked
+        trashIcon.addEventListener('click', () => {
+          const updatedArray = this.tasksArray.filter((task, taskIndex) => taskIndex != index);
+          localStorage.setItem('Tasks', JSON.stringify(updatedArray));
+          window.location.reload();
         });
       });
     });
@@ -107,6 +117,18 @@ class DataStore {
 
   getTasksArray = () => {
     return this.tasksArray;
+  }
+
+  hideElements = (args) => {
+    args.forEach((element) => {
+      element.style.display = 'none';
+    });
+  }
+
+  showElements = (args) => {
+    args.forEach((element) => {
+      element.style.display = 'flex';
+    });
   }
 }
 
