@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable */
 class DataStore {
   constructor() {
     this.tasksArray = JSON.parse(localStorage.getItem('Tasks') || '[]');

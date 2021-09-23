@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable */
 import { tasksArray } from './data.js';
 
 export const todoLists = document.querySelector('.todo-lists');
@@ -23,8 +23,7 @@ class Dragging {
     event.preventDefault();
     event.target.classList.add('drag-over');
     const hoveredElement = event.target.parentNode;
-    nextElement = (hoveredElement === dragItem.nextSibling) ? 
-                  hoveredElement.nextSibling : hoveredElement;
+    nextElement = (hoveredElement === dragItem.nextSibling) ? hoveredElement.nextSibling : hoveredElement;
 
     nextItemIndex = +nextElement.id;
     if (nextItemIndex) {
