@@ -12,6 +12,12 @@ List Structure                                    |
 
 - HTML / CSS / JAVASCRIPT / WEBPACK
 
+## How to run the program locally
+- Clone the project: ```https://github.com/mmsesay/todo-list.git```
+- Skip if you already have node installed otherwise download [nodejs](https://nodejs.org/en/download/) install it on your system
+- Install the node modules: ```npm install```
+- Run the app: ```npm start``` or ```yarn start```
+
 ## Author
 
 👤 **Muhammad Mustapha Sesay**

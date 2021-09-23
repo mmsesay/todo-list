@@ -1,4 +1,4 @@
-/* eslint-disable */
+// /* eslint-disable */
 import { tasksArray } from './data.js';
 
 export const todoLists = document.querySelector('.todo-lists');
