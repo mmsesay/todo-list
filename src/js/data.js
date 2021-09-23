@@ -81,11 +81,11 @@ class DataStore {
   getTasksArray = () => {
     return this.tasksArray;
   }
-
 }
 
-export const dataStore = new DataStore();
-dataStore.addTask();
-dataStore.readTasks();
-dataStore.handleStatusChange();
-dataStore.clearAllCompleted();
+const instance = new DataStore();
+export const showTasks = instance.readTasks();
+export const tasksArray = instance.getTasksArray();
+instance.addTask();
+instance.handleStatusChange();
+instance.clearAllCompleted();
