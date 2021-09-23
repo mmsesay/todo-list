@@ -35,6 +35,10 @@ main {
   padding: 8px 15px;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .card {
   height: 50%;
   background-color: #fff;
@@ -53,6 +57,10 @@ main {
   text-decoration: line-through;
 }
 
+.bg-yellow {
+  background-color: #fef9ce !important;
+}
+
 input:focus {
   outline: none;
 }
@@ -60,6 +68,7 @@ input:focus {
 .editInputField {
   display: none;
   font-style: normal;
+  width: 85%;
 }
 
 .description {

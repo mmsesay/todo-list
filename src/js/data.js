@@ -33,7 +33,7 @@ class DataStore {
       this.todoLists.innerHTML += `
         <div id='${index}' class='draggable' draggable='true'>
           <div class='flex space-between items-center space-x-y'>
-            <div class='flex items-center'>
+            <div class='flex items-center w-full'>
               <input type='checkbox' class='checkbox color-gray' ${todo.completed? 'checked' : ''}>
               <input type='text' value='${todo.description}' class='text-input editInputField' />
               <p class='description ${todo.completed? 'strike-line': ''}'>${todo.description}</p>
@@ -46,7 +46,7 @@ class DataStore {
     });
   }
 
-  updateTaskStatus = (taskIndex, task) => {
+  updateTask = (taskIndex, task) => {
     this.tasksArray.splice(taskIndex, 1, task);
     localStorage.setItem('Tasks', JSON.stringify(this.tasksArray));
     window.location.reload();
@@ -59,11 +59,38 @@ class DataStore {
           if (checkboxIndex === taskIndex) {
             if (checkbox.checked) {
               task.completed = true;
-              this.updateTaskStatus(taskIndex, task);
+              this.updateTask(taskIndex, task);
             } else {
               task.completed = false;
-              this.updateTaskStatus(taskIndex, task);
+              this.updateTask(taskIndex, task);
             }
+          }
+        });
+      });
+    });
+  }
+
+  editTask = () => {
+    let updateText = '';
+    document.querySelectorAll('.draggable').forEach((item, index) => {
+      item.addEventListener('dblclick', () => {
+        item.classList.add('bg-yellow');
+        const editTodoInputField = item.childNodes[1].childNodes[1].childNodes[3];
+        const description = item.childNodes[1].childNodes[1].childNodes[5];
+
+        // show the edit field
+        editTodoInputField.style.display = 'flex';
+        description.style.display = 'none';
+
+        editTodoInputField.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            updateText = editTodoInputField.value;
+            this.tasksArray.filter((task, taskIndex) => {
+              if (index === taskIndex) {
+                task.description = updateText;
+                this.updateTask(taskIndex, task);
+              }
+            });
           }
         });
       });
@@ -89,3 +116,4 @@ export const tasksArray = instance.getTasksArray();
 instance.addTask();
 instance.handleStatusChange();
 instance.clearAllCompleted();
+instance.editTask();
