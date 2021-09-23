@@ -15,10 +15,12 @@ class Dragging {
   dragStart = (event) => {
     dragItem = event.target;
     dragItemIndex = +dragItem.id;
+    dragItem.classList.add('bg-white');
   };
   
   dragOver = (event) => {
     event.preventDefault();
+    event.target.classList.add('drag-over');
     const hoveredElement = event.target.parentNode;
     nextElement = (hoveredElement === dragItem.nextSibling) ? hoveredElement.nextSibling : hoveredElement;
   
@@ -29,8 +31,8 @@ class Dragging {
       this.todoTasks.splice(dragItemIndex, 1);
       this.todoTasks.splice(nextItemIndex, 0, object);
     }
-    // localStorage.setItem('Tasks', JSON.stringify(todoTasks));
-    this.todoLists.insertBefore(dragItem, nextElement);
+    localStorage.setItem('Tasks', JSON.stringify(this.todoTasks));
+    // this.todoLists.insertBefore(dragItem, nextElement);
   };
   
   dragEnter = (event) => {

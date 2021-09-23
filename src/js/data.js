@@ -5,6 +5,8 @@ class DataStore {
     this.addTodoInputField = document.getElementById('add-todo-input-field');
     this.todoLists = document.querySelector('.todo-lists');
     this.btnClearAllCompleted = document.getElementById('clear-all-completed');
+    this.countPara = document.querySelector('.count-para');
+    this.refreshIcon = document.querySelector('.refreshIcon');
   }
 
   addTask = () => {
@@ -19,6 +21,13 @@ class DataStore {
         this.saveTask(newTaskObject);
       }
     });
+    // resends out the count of total todos
+    if (this.tasksArray.length > 0) {
+      this.countPara.innerHTML = +this.tasksArray.length;
+      this.countPara.parentNode.style.display = 'flex';
+    } else {
+      this.countPara.parentNode.style.display = 'none';
+    }
   }
 
   saveTask = (object) => {
@@ -31,14 +40,14 @@ class DataStore {
   readTasks = () => {
     this.tasksArray.forEach((todo, index) => {
       this.todoLists.innerHTML += `
-        <div id='${index}' class='draggable cursor-move' draggable='true'>
+        <div id='${index}' class='draggable' draggable='true'>
           <div class='flex space-between items-center space-x-y'>
             <div class='flex items-center w-full'>
               <input type='checkbox' class='checkbox color-gray' ${todo.completed? 'checked' : ''}>
               <input type='text' value='${todo.description}' class='text-input editInputField' />
-              <p class='description ${todo.completed? 'strike-line': ''}'>${todo.description}</p>
+              <p class='description color-gray-dark ${todo.completed? 'strike-line': ''}'>${todo.description}</p>
             </div>
-            <i class='fas fa-ellipsis-v color-gray dragIcon'></i>
+            <i class='fas fa-ellipsis-v cursor-move color-gray dragIcon'></i>
             <i class="fas fa-trash-alt cursor-pointer color-gray trashIcon"></i>
           </div>
           <div class='border-bottom-line'></div>
@@ -115,6 +124,14 @@ class DataStore {
     });
   }
 
+  clearAllTasks = () => {
+    this.refreshIcon.addEventListener('click', () => {
+      this.refreshIcon.style.transform = 'rotate(360deg)';
+      localStorage.setItem('Tasks', JSON.stringify([]));
+      window.location.reload();
+    });
+  }
+
   getTasksArray = () => {
     return this.tasksArray;
   }
@@ -139,3 +156,4 @@ instance.addTask();
 instance.handleStatusChange();
 instance.clearAllCompleted();
 instance.editTask();
+instance.clearAllTasks();
