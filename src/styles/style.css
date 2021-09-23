@@ -1,6 +1,8 @@
 body {
   background-color: #fff;
   overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 }
 
 main {
@@ -13,6 +15,14 @@ main {
 
 .color-gray {
   color: rgb(175, 172, 172);
+}
+
+.color-gray-dark {
+  color: rgb(122, 122, 122);
+}
+
+.bg-gray-light {
+  background-color: #f6f6f6;
 }
 
 .flex {
@@ -31,8 +41,24 @@ main {
   align-items: center;
 }
 
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.text-md {
+  font-size: 18px;
+}
+
 .space-x-y {
   padding: 8px 15px;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .card {
@@ -43,13 +69,19 @@ main {
 
 .text-input {
   height: 13px;
+  width: 100%;
   border: none;
   padding: 20px 0;
   font-style: italic;
+  font-size: 18px;
 }
 
 .strike-line {
   text-decoration: line-through;
+}
+
+.bg-yellow {
+  background-color: #fef9ce !important;
 }
 
 input:focus {
@@ -59,6 +91,8 @@ input:focus {
 .editInputField {
   display: none;
   font-style: normal;
+  width: 85%;
+  background-color: transparent;
 }
 
 .description {
@@ -68,8 +102,7 @@ input:focus {
 .enterIcon {
   position: absolute;
   transform: rotate(90deg);
-  top: 18.5%;
-  right: 23%;
+  right: 4%;
 }
 
 .border-bottom-line {
@@ -80,12 +113,87 @@ input:focus {
   margin-right: 20px;
 }
 
+.drag-over {
+  background-color: rgb(63, 63, 63);
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.draggable {
+  background-color: white;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-move {
+  cursor: move;
+}
+
 .dragging {
   border: 1px solid rgba(60, 103, 245, 0.842);
+  background-color: rgb(77, 77, 77);
 }
 
 .dragElement:hover {
   cursor: move;
+}
+
+.dragIcon {
+  display: flex;
+}
+
+.trashIcon {
+  display: none;
+}
+
+.refreshIcon {
+  margin-right: 10px;
+  margin-top: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+
+#clear-all-completed {
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+#clear-all-completed:hover,
+.refreshIcon:hover {
+  color: rgb(26, 26, 148);
+}
+
+.card-top-icons {
+  width: 100px;
+  height: 40px;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.count {
+  position: absolute;
+  background-color: red;
+  height: 15px;
+  width: auto;
+  padding: 2px;
+  border-radius: 100%;
+  margin-top: -20px;
+  margin-right: -3px;
+  border: 4px solid #fff;
+  flex: 1;
+  color: #fff;
+  text-align: center;
+  display: none;
+}
+
+.count > p {
+  font-size: 13px;
+  padding: 2px;
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {
@@ -94,7 +202,6 @@ input:focus {
   }
 
   .enterIcon {
-    top: 28.8%;
-    right: 21%;
+    right: 22%;
   }
 }

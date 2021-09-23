@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack-dev-server --mode production --entry ./src/js/index.js --output-filename ./dist/bundle.js",
     "build:prod": "webpack src/js/index.js dist/bundle.js -p",
-    "start": "webpack serve --open"
+    "start": "webpack serve --open",
+    "deploy": "gh-pages -d dist -b add-remove"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/mmsesay/todo-list#readme",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "css-loader": "^6.3.0",
     "html-webpack-plugin": "^5.3.2",
     "style-loader": "^3.2.1",
