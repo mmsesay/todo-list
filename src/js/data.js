@@ -117,11 +117,11 @@ class DataStore {
         });
 
         // click event to hide the edit input field and trash icon
-        // item.addEventListener('click', () => {
-        //   item.classList.remove('bg-yellow');
-        //   this.showElements([description, dragIcon]);
-        //   this.hideElements([editTodoInputField, trashIcon]);
-        // });
+        item.addEventListener('mouseleave', () => {
+          item.classList.remove('bg-yellow');
+          this.showElements([description, dragIcon]);
+          this.hideElements([editTodoInputField, trashIcon]);
+        });
       });
     });
   }
