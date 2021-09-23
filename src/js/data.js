@@ -4,6 +4,7 @@ class DataStore {
     this.tasksArray = JSON.parse(localStorage.getItem('Tasks') || '[]');
     this.addTodoInputField = document.getElementById('add-todo-input-field');
     this.todoLists = document.querySelector('.todo-lists');
+    this.btnClearAllCompleted = document.getElementById('clear-all-completed');
   }
 
   addTask = () => {
@@ -69,6 +70,14 @@ class DataStore {
     });
   }
 
+  clearAllCompleted = () => {
+    const uncompletedTasks = this.tasksArray.filter((task) => task.completed != true);
+    this.btnClearAllCompleted.addEventListener('click', () => {
+      localStorage.setItem('Tasks', JSON.stringify(uncompletedTasks));
+      window.location.reload();
+    });
+  }
+
   getTasksArray = () => {
     return this.tasksArray;
   }
@@ -79,3 +88,4 @@ export const dataStore = new DataStore();
 dataStore.addTask();
 dataStore.readTasks();
 dataStore.handleStatusChange();
+dataStore.clearAllCompleted();

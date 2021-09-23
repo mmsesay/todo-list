@@ -97,6 +97,10 @@ input:focus {
   cursor: move;
 }
 
+#clear-all-completed {
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   main {
     padding: 10% 20%;
