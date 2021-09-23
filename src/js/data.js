@@ -35,6 +35,11 @@ class DataStore {
     window.location.reload();
   }
 
+  localCache = (array = null) => {
+    localStorage.setItem('Tasks', JSON.stringify(array));
+    window.location.reload();
+  }
+
   readTasks = () => {
     this.tasksArray.forEach((todo, index) => {
       this.todoLists.innerHTML += `
@@ -56,8 +61,7 @@ class DataStore {
 
   updateTask = (taskIndex, task) => {
     this.tasksArray.splice(taskIndex, 1, task);
-    localStorage.setItem('Tasks', JSON.stringify(this.tasksArray));
-    window.location.reload();
+    this.localCache(this.tasksArray);
   }
 
   handleStatusChange = () => {
@@ -109,16 +113,15 @@ class DataStore {
         // listen for trash icon clicked
         trashIcon.addEventListener('click', () => {
           const updatedArray = this.tasksArray.filter((task, taskIndex) => taskIndex !== index);
-          localStorage.setItem('Tasks', JSON.stringify(updatedArray));
-          window.location.reload();
+          this.localCache(updatedArray);
         });
 
         // click event to hide the edit input field and trash icon
-        item.addEventListener('click', () => {
-          item.classList.remove('bg-yellow');
-          this.showElements([description, dragIcon]);
-          this.hideElements([editTodoInputField, trashIcon]);
-        });
+        // item.addEventListener('click', () => {
+        //   item.classList.remove('bg-yellow');
+        //   this.showElements([description, dragIcon]);
+        //   this.hideElements([editTodoInputField, trashIcon]);
+        // });
       });
     });
   }
@@ -126,16 +129,14 @@ class DataStore {
   clearAllCompleted = () => {
     const uncompletedTasks = this.tasksArray.filter((task) => task.completed !== true);
     this.btnClearAllCompleted.addEventListener('click', () => {
-      localStorage.setItem('Tasks', JSON.stringify(uncompletedTasks));
-      window.location.reload();
+      this.localCache(uncompletedTasks);
     });
   }
 
   clearAllTasks = () => {
     this.refreshIcon.addEventListener('click', () => {
       this.refreshIcon.style.transform = 'rotate(360deg)';
-      localStorage.setItem('Tasks', JSON.stringify([]));
-      window.location.reload();
+      this.localCache([]);
     });
   }
 

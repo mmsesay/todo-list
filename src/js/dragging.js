@@ -33,7 +33,6 @@ class Dragging {
       this.todoTasks.splice(nextItemIndex, 0, object);
     }
     localStorage.setItem('Tasks', JSON.stringify(this.todoTasks));
-    // this.todoLists.insertBefore(dragItem, nextElement);
   };
 
   dragEnter = (event) => {
