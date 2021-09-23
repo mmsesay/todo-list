@@ -112,6 +112,13 @@ class DataStore {
           localStorage.setItem('Tasks', JSON.stringify(updatedArray));
           window.location.reload();
         });
+
+        // click event to hide the edit input field and trash icon
+        item.addEventListener('click', () => {
+          item.classList.remove('bg-yellow');
+          this.showElements([description, dragIcon]);
+          this.hideElements([editTodoInputField, trashIcon]);
+        });
       });
     });
   }

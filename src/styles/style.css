@@ -92,6 +92,7 @@ input:focus {
   display: none;
   font-style: normal;
   width: 85%;
+  background-color: transparent;
 }
 
 .description {
