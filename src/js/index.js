@@ -10,7 +10,7 @@ window.onload = () => {
         <div id='${index}' class='draggable' draggable='true'>
           <div class='flex space-between items-center space-x-y'>
             <div class='flex items-center'>
-              <input type='checkbox' class='checkbox color-gray' name='${todo.index}'>
+              <input type='checkbox' class='checkbox color-gray'>
               <input type='text' value='${todo.description}' class='text-input editInputField' />
               <p class='description'>${todo.description}</p>
             </div>
@@ -21,7 +21,7 @@ window.onload = () => {
       `;
     });
   };
-  // console.log(todoTasks);/
+  
   renderTodos();
   updateTodos(todoTasks);
   enableDragging();

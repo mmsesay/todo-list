@@ -6,7 +6,7 @@ export const checkBoxes = document.querySelectorAll('.checkbox');
 let dragItem = null;
 let dragItemIndex = null;
 let nextItemIndex = null;
-let nextElement = null
+let nextElement = null;
 const dragStart = (event) => {
   dragItem = event.target;
   dragItemIndex = +dragItem.id;
@@ -43,12 +43,7 @@ const dragLeave = (event) => {
 const dragDrop = (event) => {
   event.preventDefault();
   event.target.classList.remove('drag-over');
-  console.log(todoTasks);
 };
-
-// const swapItem = (fromIndex, toIndex) => {
-//   console.log(fromIndex, toIndex);
-// };
 
 const trackDragging = () => {
   document.querySelectorAll('.draggable').forEach((todoElement) => {
