@@ -1,29 +1,16 @@
-import { todoLists } from './elements.js';
+import { todoTasks } from './data.js';
+import { todoLists, enableDragging } from './elements.js';
 import { updateTodos } from './state-management.js';
 import '../styles/style.css';
 
 window.onload = () => {
-  const todoTasks = [
-    {
-      index: 1,
-      description: 'wash the dishes',
-      completed: false,
-    },
-    {
-      index: 2,
-      description: 'complete To Do list project',
-      completed: false,
-    },
-  ];
-
-  let template = '';
   const renderTodos = () => {
-    todoTasks.forEach((todo) => {
-      template += `
-        <div class='draggable' draggable='true'>
+    todoTasks.forEach((todo, index) => {
+      todoLists.innerHTML += `
+        <div id='${index}' class='draggable' draggable='true'>
           <div class='flex space-between items-center space-x-y'>
             <div class='flex items-center'>
-              <input type='checkbox' name='${todo.index}' class='checkbox color-gray'>
+              <input type='checkbox' class='checkbox color-gray' name='${todo.index}'>
               <input type='text' value='${todo.description}' class='text-input editInputField' />
               <p class='description'>${todo.description}</p>
             </div>
@@ -33,10 +20,9 @@ window.onload = () => {
         </div>
       `;
     });
-
-    todoLists.innerHTML = template;
   };
-
+  // console.log(todoTasks);/
   renderTodos();
   updateTodos(todoTasks);
+  enableDragging();
 };

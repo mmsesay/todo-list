@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-const updateTask = (todoTasks, checkboxIndex, currentState) => {
+import { todoTasks } from './data.js';
+const updateTask = (checkboxIndex, currentState) => {
   todoTasks.forEach((todo, todoIndex) => {
     if (checkboxIndex === todoIndex) {
       todo.completed = currentState;
@@ -7,27 +8,36 @@ const updateTask = (todoTasks, checkboxIndex, currentState) => {
   });
 };
 
-const updateDescription = (selectedIndex, isSelected) => {
+const updateDescription = (checkboxIndex, isSelected) => {
   document.querySelectorAll('.description').forEach((description, descriptionIndex) => {
-    if (selectedIndex === descriptionIndex) {
-      if (isSelected) {
-        description.classList.add('strike-line');
-      } else {
-        description.classList.remove('strike-line');
-      }
+    console.log(description, descriptionIndex);
+    // console.log('selectedIndex: ', descriptionIndex);
+    if (checkboxIndex === descriptionIndex && isSelected) {
+      description.classList.add('strike-line');
+    } else {
+      description.classList.remove('strike-line');
     }
   });
 };
 
-export const updateTodos = (todoTasks) => {
-  document.querySelectorAll('.checkbox').forEach((checkbox, checkboxIndex) => {
+export const updateTodos = () => {
+  document.querySelectorAll('.checkbox').forEach((checkbox, index) => {
     checkbox.addEventListener('change', () => {
-      if (checkbox.checked) {
-        updateTask(todoTasks, checkboxIndex, true);
-        updateDescription(checkboxIndex, true);
+      const checkboxIndex = +checkbox.getAttribute('name');
+      if (checkbox.checked && (index+1 === checkboxIndex)) {
+        console.log('check: ', (index));
+        updateTask(checkboxIndex, true);
+        const description = document.querySelectorAll('.description')[index];
+        description.classList.add('strike-line');
+        console.log(description);
+
+        console.log(todoTasks);
       } else {
-        updateTask(todoTasks, checkboxIndex, false);
-        updateDescription(checkboxIndex, false);
+        console.log('uncheck: ', (index));
+        updateTask(checkboxIndex, false);
+        const description = document.querySelectorAll('.description')[index];
+        description.classList.remove('strike-line');
+        console.log(description);
       }
     });
   });

@@ -56,6 +56,10 @@ input:focus {
   outline: none;
 }
 
+li {
+  list-style: none;
+}
+
 .editInputField {
   display: none;
   font-style: normal;
@@ -80,8 +84,17 @@ input:focus {
   margin-right: 20px;
 }
 
+.drag-over {
+  background-color: gray;
+}
+
+.draggable {
+  background-color: white;
+}
+
 .dragging {
   border: 1px solid rgba(60, 103, 245, 0.842);
+  background-color: aqua;
 }
 
 .dragElement:hover {
