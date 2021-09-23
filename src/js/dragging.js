@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-import { tasksArray } from "./data.js";
+import { tasksArray } from './data.js';
+
 export const todoLists = document.querySelector('.todo-lists');
 export const checkBoxes = document.querySelectorAll('.checkbox');
 
@@ -17,41 +18,41 @@ class Dragging {
     dragItemIndex = +dragItem.id;
     dragItem.classList.add('bg-white');
   };
-  
+
   dragOver = (event) => {
     event.preventDefault();
     event.target.classList.add('drag-over');
     const hoveredElement = event.target.parentNode;
     nextElement = (hoveredElement === dragItem.nextSibling) ? hoveredElement.nextSibling : hoveredElement;
-  
+
     nextItemIndex = +nextElement.id;
     if (nextItemIndex) {
       const object = this.todoTasks[dragItemIndex];
-  
+
       this.todoTasks.splice(dragItemIndex, 1);
       this.todoTasks.splice(nextItemIndex, 0, object);
     }
     localStorage.setItem('Tasks', JSON.stringify(this.todoTasks));
     // this.todoLists.insertBefore(dragItem, nextElement);
   };
-  
+
   dragEnter = (event) => {
     event.preventDefault();
     event.target.classList.add('drag-over');
   };
-  
+
   dragLeave = (event) => {
     event.preventDefault();
     event.target.classList.remove('drag-over');
   };
-  
+
   dragDrop = (event) => {
     event.preventDefault();
     event.target.classList.remove('drag-over');
     localStorage.setItem('Tasks', JSON.stringify(this.todoTasks));
     window.location.reload();
   };
-  
+
   trackDragEvent = () => {
     document.querySelectorAll('.draggable').forEach((todoElement) => {
       todoElement.addEventListener('dragstart', this.dragStart);

@@ -12,9 +12,9 @@ class DataStore {
   addTask = () => {
     this.addTodoInputField.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
-        const value = this.addTodoInputField.value;
+        const { value } = this.addTodoInputField.value;
         const newTaskObject = {
-          index: this.tasksArray.length +1,
+          index: this.tasksArray.length + 1,
           description: value,
           completed: false,
         };
@@ -43,9 +43,9 @@ class DataStore {
         <div id='${index}' class='draggable' draggable='true'>
           <div class='flex space-between items-center space-x-y'>
             <div class='flex items-center w-full'>
-              <input type='checkbox' class='checkbox color-gray' ${todo.completed? 'checked' : ''}>
+              <input type='checkbox' class='checkbox color-gray' ${todo.completed ? 'checked' : ''}>
               <input type='text' value='${todo.description}' class='text-input editInputField' />
-              <p class='description color-gray-dark ${todo.completed? 'strike-line': ''}'>${todo.description}</p>
+              <p class='description color-gray-dark ${todo.completed ? 'strike-line' : ''}'>${todo.description}</p>
             </div>
             <i class='fas fa-ellipsis-v cursor-move color-gray dragIcon'></i>
             <i class="fas fa-trash-alt cursor-pointer color-gray trashIcon"></i>
@@ -75,6 +75,7 @@ class DataStore {
               this.updateTask(taskIndex, task);
             }
           }
+          return;
         });
       });
     });
@@ -102,13 +103,14 @@ class DataStore {
                 task.description = updateText;
                 this.updateTask(taskIndex, task);
               }
+              return;
             });
           }
         });
 
         // listen for trash icon clicked
         trashIcon.addEventListener('click', () => {
-          const updatedArray = this.tasksArray.filter((task, taskIndex) => taskIndex != index);
+          const updatedArray = this.tasksArray.filter((task, taskIndex) => taskIndex !== index);
           localStorage.setItem('Tasks', JSON.stringify(updatedArray));
           window.location.reload();
         });
@@ -124,7 +126,7 @@ class DataStore {
   }
 
   clearAllCompleted = () => {
-    const uncompletedTasks = this.tasksArray.filter((task) => task.completed != true);
+    const uncompletedTasks = this.tasksArray.filter((task) => task.completed !== true);
     this.btnClearAllCompleted.addEventListener('click', () => {
       localStorage.setItem('Tasks', JSON.stringify(uncompletedTasks));
       window.location.reload();
