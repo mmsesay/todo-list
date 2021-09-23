@@ -1,4 +1,3 @@
-// /* eslint-disable */
 class DataStore {
   constructor() {
     this.tasksArray = JSON.parse(localStorage.getItem('Tasks') || '[]');
@@ -74,6 +73,7 @@ class DataStore {
               this.updateTask(taskIndex, task);
             }
           }
+          return false;
         });
       });
     });
@@ -101,6 +101,7 @@ class DataStore {
                 task.description = updateText;
                 this.updateTask(taskIndex, task);
               }
+              return false;
             });
           }
         });
