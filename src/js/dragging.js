@@ -1,8 +1,9 @@
 /* eslint-disable import/prefer-default-export */
-import { todoTasks } from "./data.js";
+import { dataStore } from "./data.js";
 export const todoLists = document.querySelector('.todo-lists');
 export const checkBoxes = document.querySelectorAll('.checkbox');
 
+const todoTasks = dataStore.getTasksArray();
 let dragItem = null;
 let dragItemIndex = null;
 let nextItemIndex = null;
@@ -27,6 +28,7 @@ const dragOver = (event) => {
     todoTasks.splice(dragItemIndex, 1);
     todoTasks.splice(nextItemIndex, 0, object);
   }
+  // localStorage.setItem('Tasks', JSON.stringify(todoTasks));
   todoLists.insertBefore(dragItem, nextElement);
 };
 
@@ -43,6 +45,8 @@ const dragLeave = (event) => {
 const dragDrop = (event) => {
   event.preventDefault();
   event.target.classList.remove('drag-over');
+  localStorage.setItem('Tasks', JSON.stringify(todoTasks));
+  window.location.reload();
 };
 
 const trackDragging = () => {
