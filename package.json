@@ -4,7 +4,7 @@
   "description": "this is a simple todo list application using webpack and it is being served by webpack dev server",
   "private": true,
   "scripts": {
-    "test": "jest --coverage --testPathPattern=tests/",
+    "test": "jest --coverage --testPathPattern=__tests__/",
     "build": "webpack",
     "start": "webpack serve --open"
   },
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mmsesay/todo-list#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.3.0",
     "html-webpack-plugin": "^5.3.2",
