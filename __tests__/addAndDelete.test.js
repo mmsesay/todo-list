@@ -34,4 +34,11 @@ describe('adding tasks', () => {
     changeTaskStatus(task, updatedStatus);
     expect(task.completed).toEqual(updatedStatus);
   });
+
+  test('clear all completed tasks', () => {
+    clearAllCompletedTask();
+    const todoLists = document.querySelectorAll('.draggable');
+
+    expect(todoLists).toMatchObject({});
+  });
 });
