@@ -14,3 +14,7 @@ export const deleteTask = (removeAtIndex) => {
   document.body.innerHTML = '';
 };
 
+export const editTask = (task, updateText) => {
+  task.description = updateText;
+  localStorage.setItem('todos', task);
+};
