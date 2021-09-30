@@ -1,6 +1,7 @@
 /** * @jest-environment jsdom */
 import {
   addTask, deleteTask, editTask, changeTaskStatus,
+  clearAllCompletedTask,
 } from '../utils/index.js';
 import { task } from '../utils/sampleData.js';
 
