@@ -18,3 +18,8 @@ export const editTask = (task, updateText) => {
   task.description = updateText;
   localStorage.setItem('todos', task);
 };
+
+export const changeTaskStatus = (task, status) => {
+  task.completed = status;
+  localStorage.setItem('todos', task);
+};
