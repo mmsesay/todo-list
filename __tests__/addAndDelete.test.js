@@ -1,5 +1,7 @@
 /** * @jest-environment jsdom */
-import { addTask, deleteTask, editTask } from '../utils/index.js';
+import {
+  addTask, deleteTask, editTask, changeTaskStatus,
+} from '../utils/index.js';
 import { task } from '../utils/sampleData.js';
 
 describe('adding tasks', () => {
@@ -24,5 +26,12 @@ describe('adding tasks', () => {
 
     editTask(task, updateText);
     expect(task.description).toEqual(updateText);
+  });
+
+  test('update a task\'s status', () => {
+    const updatedStatus = true;
+
+    changeTaskStatus(task, updatedStatus);
+    expect(task.completed).toEqual(updatedStatus);
   });
 });
