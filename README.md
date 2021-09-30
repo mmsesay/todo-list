@@ -3,7 +3,11 @@ This is a simple todo list web page which is be built using webpack and served b
 
 List Structure                                    |
 :------------------------------------------------:|
-![](./assets/todo-v1.png)                        |
+![](./assets/todo-v1.png)                         |
+
+Test Covereage                                                                                       |
+:---------------------------------------------------------------------------------------------------:|
+![](./assets/coverage.png)                                                                           |
 
 ## Online version
 [demo](https://mmsesay.github.io/todo-list/)
