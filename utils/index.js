@@ -13,3 +13,4 @@ export const deleteTask = (removeAtIndex) => {
   localStorage.setItem('todos', filtered);
   document.body.innerHTML = '';
 };
+

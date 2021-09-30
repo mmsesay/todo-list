@@ -1,5 +1,5 @@
 /** * @jest-environment jsdom */
-import { addTask, deleteTask } from '../utils/index.js';
+import { addTask, deleteTask, editTask } from '../utils/index.js';
 import { task } from '../utils/sampleData.js';
 
 describe('adding tasks', () => {
@@ -17,5 +17,12 @@ describe('adding tasks', () => {
     const todoLists = document.querySelectorAll('.draggable');
 
     expect(todoLists).toMatchObject({});
+  });
+
+  test('edit a task description', () => {
+    const updateText = 'write test for editing tasks';
+
+    editTask(task, updateText);
+    expect(task.description).toEqual(updateText);
   });
 });
