@@ -1,5 +1,5 @@
 /** * @jest-environment jsdom */
-import { addTask } from '../utils/helpers.js';
+import { addTask } from '../utils/index.js';
 
 describe('adding tasks', () => {
   test('add task to the list', () => {
