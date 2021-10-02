@@ -5,7 +5,4 @@ import '../styles/style.css';
 window.onload = () => {
   showTasks();// invoke the data store class
   enableDragging(); // enable element dragging
-
-  const todoLists = document.querySelector('.todo-lists');
-  console.log(todoLists.offsetHeight);
 };

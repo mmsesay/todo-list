@@ -16,7 +16,6 @@ class Dragging {
     dragItem = event.target;
     dragItemIndex = +dragItem.id;
     dragItem.classList.add('drag-over');
-    console.log(dragItem);
   };
 
   dragOver = (event) => {
@@ -52,7 +51,6 @@ class Dragging {
     this.todoTasks.forEach((item, index) => {
       item.index = index + 1;
     });
-    console.log(event.target);
     localStorage.setItem('Tasks', JSON.stringify(this.todoTasks));
     window.location.reload();
   };
