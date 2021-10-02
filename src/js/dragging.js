@@ -48,12 +48,15 @@ class Dragging {
   dragDrop = (event) => {
     event.preventDefault();
     event.target.classList.remove('drag-over');
+    this.todoTasks.forEach((item, index) => {
+      item.index = index + 1;
+    });
     localStorage.setItem('Tasks', JSON.stringify(this.todoTasks));
     window.location.reload();
   };
 
   trackDragEvent = () => {
-    document.querySelectorAll('.draggable').forEach((todoElement) => {
+    document.querySelectorAll('.todoItem').forEach((todoElement) => {
       todoElement.addEventListener('dragstart', this.dragStart);
       todoElement.addEventListener('dragover', this.dragOver);
       todoElement.addEventListener('dragleave', this.dragLeave);

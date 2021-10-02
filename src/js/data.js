@@ -17,6 +17,7 @@ class DataStore {
           completed: false,
         };
         this.saveTask(newTaskObject);
+        this.addTodoInputField.value = '';
       }
     });
     // resends out the count of total todos
@@ -28,35 +29,34 @@ class DataStore {
     }
   }
 
+  readTasks = () => {
+    this.tasksArray.forEach((todo, index) => {
+      this.todoLists.innerHTML += `
+        <div id='${index}' class='todoItem flex items-center space-between' draggable='true'>
+          <div class='flex items-center space-x-y'>
+            <input type='checkbox' class='checkbox color-gray' ${todo.completed ? 'checked' : ''}>
+            <input type='text' value='${todo.description}' class='text-input editInputField' />
+            <p class='description color-gray-dark ${todo.completed ? 'strike-line' : ''}'>${todo.description}</p>
+          </div>
+          <div class="space-x-y">
+            <i class='fas fa-ellipsis-v cursor-move color-gray dragIcon'></i>
+            <i class="fas fa-trash-alt cursor-pointer color-gray trashIcon"></i>
+          </div>
+        </div>
+        <div class='border-bottom-line'></div>
+      `;
+    });
+  }
+
   saveTask = (object) => {
     this.tasksArray.push(object);
     localStorage.setItem('Tasks', JSON.stringify(this.tasksArray));
-    this.addTodoInputField.value = '';
-    window.location.reload();
+    window.location.reload(true);
   }
 
   localCache = (array = null) => {
     localStorage.setItem('Tasks', JSON.stringify(array));
     window.location.reload();
-  }
-
-  readTasks = () => {
-    this.tasksArray.forEach((todo, index) => {
-      this.todoLists.innerHTML += `
-        <div id='${index}' class='draggable' draggable='true'>
-          <div class='flex space-between items-center space-x-y'>
-            <div class='flex items-center w-full'>
-              <input type='checkbox' class='checkbox color-gray' ${todo.completed ? 'checked' : ''}>
-              <input type='text' value='${todo.description}' class='text-input editInputField' />
-              <p class='description color-gray-dark ${todo.completed ? 'strike-line' : ''}'>${todo.description}</p>
-            </div>
-            <i class='fas fa-ellipsis-v cursor-move color-gray dragIcon'></i>
-            <i class="fas fa-trash-alt cursor-pointer color-gray trashIcon"></i>
-          </div>
-          <div class='border-bottom-line'></div>
-        </div>
-      `;
-    });
   }
 
   updateTask = (taskIndex, task) => {
@@ -83,15 +83,22 @@ class DataStore {
     });
   }
 
+  removeTask = (index) => {
+    const updatedArray = this.tasksArray.filter((task, taskIndex) => taskIndex !== index);
+    updatedArray.forEach((item, index) => {
+      item.index = index + 1;
+    });
+    this.localCache(updatedArray);
+  }
+
   editTask = () => {
-    let updateText = '';
-    document.querySelectorAll('.draggable').forEach((item, index) => {
+    document.querySelectorAll('.todoItem').forEach((item, index) => {
       item.addEventListener('dblclick', () => {
         item.classList.add('bg-yellow');
-        const editTodoInputField = item.childNodes[1].childNodes[1].childNodes[3];
-        const description = item.childNodes[1].childNodes[1].childNodes[5];
-        const dragIcon = item.childNodes[1].childNodes[3];
-        const trashIcon = item.childNodes[1].childNodes[5];
+        const editTodoInputField = item.childNodes[1].childNodes[3];
+        const description = item.childNodes[1].childNodes[5];
+        const dragIcon = item.childNodes[3].childNodes[1];
+        const trashIcon = item.childNodes[3].childNodes[3];
 
         this.showElements([editTodoInputField, trashIcon]);
         this.hideElements([description, dragIcon]);
@@ -99,10 +106,10 @@ class DataStore {
         // listen for enter key press to edit item
         editTodoInputField.addEventListener('keydown', (event) => {
           if (event.key === 'Enter') {
-            updateText = editTodoInputField.value;
+            const { value } = editTodoInputField;
             this.tasksArray.filter((task, taskIndex) => {
               if (index === taskIndex) {
-                task.description = updateText;
+                task.description = value;
                 this.updateTask(taskIndex, task);
               }
               return false;
@@ -112,8 +119,7 @@ class DataStore {
 
         // listen for trash icon clicked
         trashIcon.addEventListener('click', () => {
-          const updatedArray = this.tasksArray.filter((task, taskIndex) => taskIndex !== index);
-          this.localCache(updatedArray);
+          this.removeTask(index);
         });
 
         // click event to hide the edit input field and trash icon

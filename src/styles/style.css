@@ -1,12 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #fff;
-  overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
+  overflow-y: scroll;
 }
 
 main {
   padding: 10% 0;
+  height: 100vh;
+  background-color: #2c3e50;
 }
 
 .list-none {
@@ -27,6 +34,10 @@ main {
 
 .flex {
   display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .space-between {
@@ -62,9 +73,21 @@ main {
 }
 
 .card {
-  height: 50%;
+  height: auto;
   background-color: #fff;
   box-shadow: 5px 5px 20px 5px rgba(212, 212, 212, 0.466);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-top {
+  /* height: 0%; */
+  background-color: greenyellow;
+}
+
+.card-bottom {
+  height: 8%;
+  background-color: blue;
 }
 
 .text-input {
@@ -100,9 +123,7 @@ input:focus {
 }
 
 .enterIcon {
-  position: absolute;
   transform: rotate(90deg);
-  right: 4%;
 }
 
 .border-bottom-line {
@@ -121,8 +142,9 @@ input:focus {
   background-color: #fff;
 }
 
-.draggable {
+.todoItem {
   background-color: white;
+  height: 60px;
 }
 
 .cursor-pointer {
@@ -159,6 +181,7 @@ input:focus {
 #clear-all-completed {
   cursor: pointer;
   font-size: 20px;
+  padding: 10px 0;
   transition: all 0.5s ease-in-out;
 }
 
@@ -201,7 +224,7 @@ input:focus {
     padding: 10% 20%;
   }
 
-  .enterIcon {
-    right: 22%;
+  .card {
+    margin: 0 20%;
   }
 }
