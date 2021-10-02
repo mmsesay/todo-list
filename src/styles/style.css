@@ -7,13 +7,17 @@ body {
   background-color: #fff;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
 main {
   padding: 10% 0;
   height: 100vh;
-  background-color: #2c3e50;
+  background-color: #3300;
+  background-image: url("../../assets/rose-petals.svg");
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: hidden;
 }
 
 .list-none {
@@ -26,6 +30,10 @@ main {
 
 .color-gray-dark {
   color: rgb(122, 122, 122);
+}
+
+.color-white {
+  color: #fff;
 }
 
 .bg-gray-light {
@@ -74,20 +82,31 @@ main {
 
 .card {
   height: auto;
-  background-color: #fff;
-  box-shadow: 5px 5px 20px 5px rgba(212, 212, 212, 0.466);
+  margin: 0 10%;
+  box-shadow: 5px 5px 50px 20px #91094c;
   border-radius: 10px;
+  border: 1px solid #2c3e50;
   overflow: hidden;
 }
 
-.card-top {
-  /* height: 0%; */
-  background-color: greenyellow;
+.c-top {
+  height: 8%;
+  background-color: #2c3e50;
+}
+
+.input-section,
+.todo-lists {
+  background-color: #fff;
+}
+
+.todo-lists {
+  max-height: 300px;
+  overflow-y: scroll;
 }
 
 .card-bottom {
   height: 8%;
-  background-color: blue;
+  background-color: #2c3e50;
 }
 
 .text-input {
@@ -120,6 +139,7 @@ input:focus {
 
 .description {
   display: flex;
+  font-weight: 500;
 }
 
 .enterIcon {
@@ -135,15 +155,16 @@ input:focus {
 }
 
 .drag-over {
-  background-color: rgb(63, 63, 63);
+  background-color: rgb(187, 187, 187) !important;
+  opacity: 1;
 }
 
 .bg-white {
-  background-color: #fff;
+  background-color: rgb(63, 63, 63);
 }
 
 .todoItem {
-  background-color: white;
+  background-color: rgba(230, 230, 230, 0.808);
   height: 60px;
 }
 
@@ -187,7 +208,7 @@ input:focus {
 
 #clear-all-completed:hover,
 .refreshIcon:hover {
-  color: rgb(26, 26, 148);
+  color: #fff;
 }
 
 .card-top-icons {
@@ -226,5 +247,9 @@ input:focus {
 
   .card {
     margin: 0 20%;
+  }
+
+  .todo-lists {
+    max-height: 500px;
   }
 }

@@ -51,7 +51,7 @@ class DataStore {
   saveTask = (object) => {
     this.tasksArray.push(object);
     localStorage.setItem('Tasks', JSON.stringify(this.tasksArray));
-    window.location.reload(true);
+    window.location.reload();
   }
 
   localCache = (array = null) => {

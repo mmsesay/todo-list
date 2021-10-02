@@ -49,6 +49,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 - microverseinc for the readme template
 - @mshwery [Minimalist](https://web.archive.org/) for the design template
+- ![svgbackgrounds](https://www.svgbackgrounds.com/) for the svg bacground
 
 ## 📝 License
 
