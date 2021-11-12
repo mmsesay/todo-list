@@ -1,5 +1,5 @@
 # todo-list
-This is a simple todo list web page which is be built using webpack and served by a webpack dev server.
+This is a simple to-do list web page that is being built using webpack and served by a webpack dev server..
 
 List Structure                                                                                       |
 :---------------------------------------------------------------------------------------------------:|
